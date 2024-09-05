@@ -13,6 +13,12 @@ const Todo = () => {
     setTaskInput("");
   };
 
+  const deleteHandler = (index) => {
+    let copyTask = [...allTask];
+    copyTask.splice(index, 1);
+    setAllTask(copyTask);
+  };
+
   let renderTask = (
     <h2 className="bg-white px-4 py-2 rounded mb-4">
       Please add your first task
@@ -32,7 +38,12 @@ const Todo = () => {
               <button className="w-9 p-2">
                 <img src={editIcon} alt="Edit" />
               </button>
-              <button className="w-9 p-2">
+              <button
+                className="w-9 p-2"
+                onClick={() => {
+                  deleteHandler(index);
+                }}
+              >
                 <img src={deleteIcon} alt="Delete" />
               </button>
             </div>
@@ -43,7 +54,7 @@ const Todo = () => {
   }
 
   return (
-    <div>
+    <div className="">
       <div className="container max-w-lg mx-auto p-5">
         <div className="flex text-white justify-between border-2 border-teal-200 p-8 rounded-2xl">
           <div>
